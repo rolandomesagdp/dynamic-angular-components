@@ -11,8 +11,7 @@ import { Product } from '../product.interface';
   selector: 'app-products-table',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './products-table.component.html',
-  styleUrl: './products-table.component.scss'
+  templateUrl: './products-table.component.html'
 })
 export class ProductsTableComponent implements OnInit, OnChanges {
   @Input({ required: true }) productType: ProductType | null = null;
