@@ -1,0 +1,12 @@
+@if(products && products.length > 0) {
+  @for (product of products; track product.id) {
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <div>Name: {{product.productName}}</div>
+        <div>Max Power: {{product.maxPower}}</div>
+        <div>Treatment: {{product.poolTreatment}}</div>
+        <div>Time to reach set point: {{product.timeToReachSetPoint}}</div>
+      </mat-card-content>
+    </mat-card>
+  }
+}

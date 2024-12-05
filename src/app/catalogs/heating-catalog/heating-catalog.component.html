@@ -1,0 +1,14 @@
+@if(heatingCatalog) {
+  <mat-tab-group (selectedTabChange)="onCatalogTabChanged($event)">
+    <mat-tab label="Heat Pumps">
+      <div>Heat Pumps</div>
+    </mat-tab>
+    <mat-tab label="Electric Heaters">
+      <div>Electric Heaters</div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <app-products-table [products]="productsList.currentProductsPage" [productType]="currentProductType" />
+  <button mat-button (click)="productsList.previousPage()">Previous page</button>
+  <button mat-button (click)="productsList.nextPage()">Next page</button>
+}
