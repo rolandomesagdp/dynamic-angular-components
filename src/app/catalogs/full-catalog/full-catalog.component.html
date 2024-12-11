@@ -1,0 +1,5 @@
+@if(catalog$ | async; as catalog) {
+  <app-products-catalog [catalog]="catalog" catalogType="heating" />
+  <mat-divider></mat-divider>
+  <app-products-catalog [catalog]="catalog" catalogType="dehum" />
+}
