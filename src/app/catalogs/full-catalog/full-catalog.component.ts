@@ -5,12 +5,11 @@ import { Catalog } from '../catalog.interface';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-import { DehumCatalogComponent } from '../dehum-catalog/dehum-catalog.component';
 
 @Component({
   selector: 'app-full-catalog',
   standalone: true,
-  imports: [CommonModule, MatDividerModule, ProductsCatalogComponent, DehumCatalogComponent],
+  imports: [CommonModule, MatDividerModule, ProductsCatalogComponent],
   providers: [CatalogService],
   templateUrl: './full-catalog.component.html',
   styleUrl: './full-catalog.component.scss'
