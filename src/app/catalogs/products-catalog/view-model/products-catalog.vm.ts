@@ -2,25 +2,46 @@ import { CatalogTab } from "./catalog-tab.vm";
 import { CatalogType } from "./catalog-type";
 
 export class ProductsCatalogViewModel {
-  tabs: CatalogTab[] = [];
-  activeTab: CatalogTab;
+  private _title: string = "";
+  private _tabs: CatalogTab[] = [];
+  private _activeTab: CatalogTab;
 
-  constructor (public catalogType: CatalogType) {
+  get tabs(): CatalogTab[] {
+    return this._tabs;
+  }
+
+  get activeTab(): CatalogTab {
+    return this._activeTab;
+  }
+
+  get title(): string {
+    return this._title;
+  }
+
+  private constructor (public catalogType: CatalogType) {
     this.setupViewModel();
-    this.activeTab = { ...this.tabs[0] };
+    this._activeTab = { ...this._tabs[0] };
+  }
+
+  static create(catalogType: CatalogType): ProductsCatalogViewModel {
+    const catalogVM = new ProductsCatalogViewModel(catalogType);
+    catalogVM.setupViewModel();
+    return catalogVM;
   }
 
   changeActiveTab(tabIndex: number): void {
-    this.activeTab = { ...this.tabs[tabIndex] };
+    this._activeTab = { ...this._tabs[tabIndex] };
   }
 
   private setupViewModel() {
     switch (this.catalogType) {
-      case "heating": {
+      case "heating-catalog": {
+        this._title = "Heating solutions recommended for you";
         this.setupHeatingTabs();
         break;
       }
-      case "dehum": {
+      case "dehum-catalog": {
+        this._title = "Dehumidifier solutions recommended for you";
         this.setupDehumTabs();
         break;
       }
@@ -28,19 +49,22 @@ export class ProductsCatalogViewModel {
   }
 
   private setupHeatingTabs(): void {
-    this.tabs = [{
+    this._tabs = [{
       id: "heatPump",
-      label: "Heat Pumps"
+      label: "Heat Pumps",
+      message: "Some message for the Heat Pumps tab"
     }, {
       id: "electricHeater",
-      label: "Electric Heater"
+      label: "Electric Heater",
+      message: "Some message for the Electric Heater tab"
     }];
   }
 
   private setupDehumTabs(): void {
-    this.tabs = [{
+    this._tabs = [{
       id: "dehum",
-      label: "Dehumidifiers"
+      label: "Dehumidifiers",
+      message: "Some message for the Dehumidifier tab"
     }];
   }
 }

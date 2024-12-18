@@ -3,9 +3,8 @@ import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductsTableComponent } from '../../products/products-table/products-table.component';
-import { ProductType } from '../../products/product-type.type';
 import { ProductsList } from '../../products/products-list.class';
-import { Catalog } from '../catalog.interface';
+import { AnalysisResult } from '../analysis-result.interface';
 import { ProductsCatalogViewModel } from './view-model/products-catalog.vm';
 import { CatalogType } from './view-model/catalog-type';
 
@@ -18,15 +17,15 @@ import { CatalogType } from './view-model/catalog-type';
   styleUrl: './products-catalog.component.scss'
 })
 export class ProductsCatalogComponent implements OnInit {
-  @Input({ required: true }) catalogType: CatalogType = "heating";
-  @Input({ required: true }) catalog: Catalog | null = null;
+  @Input({ required: true }) catalogType: CatalogType = "heating-catalog";
+  @Input({ required: true }) catalog: AnalysisResult | null = null;
 
   catalogVM: ProductsCatalogViewModel | null = null;
 
   constructor (public productsList: ProductsList) { }
 
   ngOnInit(): void {
-    this.catalogVM = new ProductsCatalogViewModel(this.catalogType);
+    this.catalogVM = ProductsCatalogViewModel.create(this.catalogType);
     this.setProductsList();
   }
 

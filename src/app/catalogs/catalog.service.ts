@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Catalog } from './catalog.interface';
+import { AnalysisResult } from './analysis-result.interface';
 import { Dehum } from '../products/dehum';
 import { HeatPump } from '../products/heatpump.interface';
 import { ElectricHeater } from '../products/electric-heater';
@@ -10,8 +10,8 @@ export class CatalogService {
 
   constructor () { }
 
-  getCatalog(): Observable<Catalog> {
-    const catalog: Catalog = {
+  getCatalog(): Observable<AnalysisResult> {
+    const catalog: AnalysisResult = {
       heating: {
         heatPumps: this.getHeatPumps(),
         electricHeaters: this.getElectricHeaters()

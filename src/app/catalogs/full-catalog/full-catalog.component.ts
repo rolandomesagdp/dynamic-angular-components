@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsCatalogComponent } from '../products-catalog/products-catalog.component';
 import { CatalogService } from '../catalog.service';
-import { Catalog } from '../catalog.interface';
+import { AnalysisResult } from '../analysis-result.interface';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
@@ -15,7 +15,7 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrl: './full-catalog.component.scss'
 })
 export class FullCatalogComponent {
-  catalog$: Observable<Catalog> = this.catalogService.getCatalog();
+  catalog$: Observable<AnalysisResult> = this.catalogService.getCatalog();
 
   constructor (private catalogService: CatalogService) { }
 }

@@ -1,1 +1,1 @@
-export type CatalogType = "heating" | "dehum";
+export type CatalogType = "heating-catalog" | "dehum-catalog";

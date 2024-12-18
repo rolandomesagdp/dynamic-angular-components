@@ -1,14 +1,16 @@
 @if(catalog && catalogVM) {
+  <h1>{{catalogVM.title}}</h1>
   <mat-tab-group (selectedTabChange)="onCatalogTabChanged($event)">
     @for (tab of catalogVM.tabs; track tab.id) {
       <mat-tab [id]="tab.id" [label]="tab.label">
-        <div>{{tab.label}}</div>
+
+        <div>{{tab.message}}</div>
       </mat-tab>
     }
   </mat-tab-group>
 
   <app-products-table
-    [products]="productsList.currentProductsPage"
+    [products]="productsList.currentPage"
     [productType]="catalogVM.activeTab.id" />
   <button mat-button (click)="productsList.previousPage()">Previous page</button>
   <button mat-button (click)="productsList.nextPage()">Next page</button>
